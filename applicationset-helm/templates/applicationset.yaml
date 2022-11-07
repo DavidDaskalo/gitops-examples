@@ -16,7 +16,7 @@ spec:
           prune: true
           selfHeal: true
       source:
-        repoURL: https://github.com/christianh814/gitops-examples
+        repoURL: https://github.com/DavidDaskalo/gitops-examples
         targetRevision: HEAD
         path: applicationsets/cluster-generator/overlays/dev/
       destination:
