@@ -1,0 +1,24 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: bgd
+  namespace: openshift-gitops
+spec:
+  generators:
+  - clusters: {} # targets all clusters
+  template:
+    metadata:
+      name: '{{ .Values.generator.name }}-bgd' # the "name" is the name field in the secret
+    spec:
+      project: default
+      syncPolicy:
+        automated:
+          prune: true
+          selfHeal: true
+      source:
+        repoURL: https://github.com/christianh814/gitops-examples
+        targetRevision: HEAD
+        path: applicationsets/cluster-generator/overlays/dev/
+      destination:
+        server: '{{ .Values.generator.server }}' # "server" from the field in the secret
+        namespace: bgd

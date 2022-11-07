@@ -1,0 +1,16 @@
+spec:
+  destination:
+    server: "https://api.oc46-devel.cloudlet-dev.com:6443"
+    namespace: "argo-to-argo-app"
+  source:
+    path: .
+    repoURL: https://github.com/christianh814/gitops-examples
+    targetRevision: HEAD
+  project: default
+  labelKey: test
+  labelValue: dev
+generator:
+  name: "{{name}}"
+  server: "{{server}}"
+  valuefile: "{{path.basename}}"
+appsetNamespace: openshift-gitops
